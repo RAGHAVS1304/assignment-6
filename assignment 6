@@ -1,0 +1,171 @@
+#solution 1
+x=int(input("enter your integer\n"))
+i=1
+sum=0
+while(i<x):
+    if  x%i==0:
+        sum=sum+i
+    i+=1
+if sum==x:
+    print("your number is perfect number")
+else:
+    print("your number is not perfect number")
+    
+#solution 2
+x=input("enter your string\n")
+a=""
+for i in x [::-1]:
+    a=a+i
+if a==x:
+    print("your string is a palindrome")
+else:
+    print("your string is not a palidrome")
+
+
+#solution 3
+n = 5
+prev = [1,1]
+prevextend = [0]*(n-2)
+prev.extend(prevextend)
+for i in range(1, n+1):
+    curr = [0]*i
+    for j in range(1, n-i+1):
+        print(" ", end="")
+    if i == 1:
+        print("1", end="")
+    elif i == 2:
+        print("1 1", end="")
+    else:
+        curr[0] = 1
+        #updating curr list
+        for j in range(1, i-1):
+            curr[j] = prev[j-1] + prev[j]
+        curr[i-1] = 1
+        
+        #printing
+        for j in range(0, i):
+            print(curr[j], end=" ")
+        
+        for j in range(0, i):
+            prev[j] = curr[j]
+    print()
+   
+#solution 4
+x=input("enter your sentence:\n")
+b = True
+for i in range (97,123):
+    z=chr(i)
+    if (z not in (x)):
+        b = False
+        break
+if b:
+        print("your sentence is a pangram")
+else:
+        print("your sentence is not a pangram")
+
+#solution 5
+s = input()
+list = s.split('-')
+x = sorted(list)
+for i in range(0, len(x)-1):
+    print(x[i], end="-")
+print(x[len(x)-1])
+
+#solution 6
+class py_solution:
+ def threeSum(self, nums):
+        nums, result, i = sorted(nums), [], 0
+        while i < len(nums) - 2:
+            j, k = i + 1, len(nums) - 1
+            while j < k:
+                if nums[i] + nums[j] + nums[k] < 0:
+                    j += 1
+                elif nums[i] + nums[j] + nums[k] > 0:
+                    k -= 1
+                else:
+                    result.append([nums[i], nums[j], nums[k]])
+                    j, k = j + 1, k - 1
+                    while j < k and nums[j] == nums[j - 1]:
+                        j += 1
+                    while j < k and nums[k] == nums[k + 1]:
+                        k -= 1
+            i += 1
+            while i < len(nums) - 2 and nums[i] == nums[i - 1]:
+                i += 1
+        return result
+
+print(py_solution().threeSum([-25, -10, -7, -3, 2, 4, 8, 10]))
+
+
+#solution 7
+class Student:
+    pass
+
+class Marks:
+    pass
+
+student1 = Student()
+mark1 = Marks()
+
+print(isinstance(student1, Student)) # prints True
+print(isinstance(mark1, Marks)) # prints True
+
+print(issubclass(Student, object)) # prints True
+print(issubclass(Marks, object)) # prints True
+
+#solution 8
+def student_data(student_id, student_name, student_class):
+    return f'Student ID: {student_id}\nStudent Name: {student_name}\nClass: {student_class}'
+print(student_data('22105084', ' Saksham gumber', 'ECE'))
+
+#solution 9
+a = input()
+isValid = True
+stack = []
+for i in range(0, len(a)):
+    ch = a[i]
+    if(len(stack) == 0):
+        stack.append(ch)
+    else:
+        if ch in "([{":
+            stack.append(ch)
+        elif ch in ")]}":
+            if ch == ")":
+                if stack[-1] == "(":
+                    stack.pop()
+                else:
+                    isValid = False
+                    break
+            if ch == "]":
+                if stack[-1] == "[":
+                    stack.pop()
+                else:
+                    isValid = False
+                    break
+            if ch == "}":
+                if stack[-1] == "{":
+                    stack.pop()
+                else:
+                    isValid = False
+                    break
+print(isValid)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
